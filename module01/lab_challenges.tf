@@ -13,10 +13,13 @@ provider "aws" {
   region  = "us-west-2"
 }
 
+resource "aws_s3_bucket_acl" "my_bucket_acl" {
+  bucket = aws_s3_bucket.my_bucket.id
+  acl    = "private"
+}
+
 resource "aws_s3_bucket" "my_bucket" {
   bucket = "smx123yzap"
-  acl = "private"
-
 }
 
 resource "aws_iam_group" "admins" {
